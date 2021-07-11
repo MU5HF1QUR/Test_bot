@@ -4,6 +4,8 @@ Uptimerobot is used to ping the bot host server so that it doesn't go into sleep
 
 read more about deploying http server here: https://docs.replit.com/hosting/deploying-http-servers
 
+Bot add link: https://discord.com/api/oauth2/authorize?client_id=863718971337211934&permissions=2148005952&scope=bot
+
 Features and Commands for the bot:
 
 ["sad", "depressed", "unhappy", "angry", "miserable", "depressing"]
