@@ -13,7 +13,4 @@ if users uses any of this words in their message bot will send an uplifting repl
 
 
 1. $inspire = use this to get random inspiring quotes.
-2. $new .... = to add uplifting messages into the bot.
-3. $del .... = to delete any message from the list.
-4. $list = to see all the message stored in the bot.
-5. $responding true/false = to turn on or off the feature which reads user message and give replys for some key words. 
+2. $responding true/false = to turn on or off the feature which reads user message and give replys for some key words. 
