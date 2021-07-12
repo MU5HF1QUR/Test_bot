@@ -25,19 +25,6 @@ def get_quote():
   quote = json_data[0]['q'] + " -" + json_data[0]['a']
   return(quote)
 
-def update_encouragements(encouraging_message):
-  if "encouragements" in db.keys():
-    encouragements = db["encouragements"]
-    encouragements.append(encouraging_message)
-    db["encouragements"] = encouragements
-  else:
-    db["encouragements"] = [encouraging_message]
-
-def delete_encouragment(index):
-  encouragements = db["encouragements"]
-  if len(encouragements) > index:
-    del encouragements[index]
-    db["encouragements"] = encouragements
 
 @client.event
 async def on_ready():
@@ -54,32 +41,13 @@ async def on_message(message):
     quote = get_quote()
     await message.channel.send(quote)
 
-  if db["responding"]:
-    options = starter_encouragements
-    if "encouragements" in db.keys():
-      options = options + db["encouragements"]
-
+  
+  if db["responding"]:    
     if any(word in msg for word in sad_words):
-      await message.channel.send(random.choice(options))
+      await message.channel.send(random.choice(starter_encouragements))
+  
 
-  if msg.startswith("$new"):
-    encouraging_message = msg.split("$new ",1)[1]
-    update_encouragements(encouraging_message)
-    await message.channel.send("New encouraging message added.")
-
-  if msg.startswith("$del"):
-    encouragements = []
-    if "encouragements" in db.keys():
-      index = int(msg.split("$del",1)[1])
-      delete_encouragment(index)
-      encouragements = db["encouragements"]
-    await message.channel.send(encouragements)
-
-  if msg.startswith("$list"):
-    encouragements = []
-    if "encouragements" in db.keys():
-      encouragements = db["encouragements"]
-    await message.channel.send(encouragements)
+ 
 
   if msg.startswith("$responding"):
     value = msg.split("$responding ",1)[1]
